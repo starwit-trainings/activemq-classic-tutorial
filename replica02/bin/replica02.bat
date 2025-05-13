@@ -1,6 +1,6 @@
 @echo off
-set ACTIVEMQ_HOME="/home/markus/workspaces/trainings/activemq/apache-activemq-6.1.6"
-set ACTIVEMQ_BASE="/home/markus/workspaces/trainings/activemq/masterslave/slave"
+set ACTIVEMQ_HOME="../../../apache-activemq-6.1.6"
+set ACTIVEMQ_BASE=".."
 
 set PARAM=%1
 :getParam
