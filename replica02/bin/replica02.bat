@@ -1,6 +1,8 @@
 @echo off
 set ACTIVEMQ_HOME="../../../apache-activemq-6.1.6"
 set ACTIVEMQ_BASE=".."
+set ACTIVEMQ_CONF="../conf"
+set ACTIVEMQ_DATA="../data"
 
 set PARAM=%1
 :getParam
