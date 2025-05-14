@@ -72,13 +72,13 @@ Use the following (Linux) commands to run listener and producer. Adapt if you us
 ```bash
 cd clients/simple-listener
 mvn clean package
-java -jar targe/simple-listener.jar
+java -jar target/simple-listener.jar
 ```
 
 ```bash
 cd clients/simple-producer
 mvn clean package
-java -jar targe/simple-producer.jar
+java -jar target/simple-producer.jar
 ```
 
 If everything is started properly you should see an output like this:
@@ -111,6 +111,20 @@ If you started both instances, you should see log output like follows:
 
 ## Java Examples
 A message broker is of little use, if no application is using it. 
+
+### Using Jolokia API
+
+### Using HTTP as transport
+This example shows you, how to send messages using HTTP(s) as transport protocol- __NOTE__: There are many _much better_ ways to achieve this. See sections [Jolokia API](#using-jolokia-api) or [Camel](#camel-examples) for better approaches.
+
+Start [hello world](#hello-world) example omitting producer client. Instead run:
+```bash
+cd clients/http-producer
+mvn clean package
+java -jar target/http-producer.jar
+```
+
+This example sends messages via a http tunnel. Next to the drawbacks of this protocol, note, that some pretty outdated libraries are necessary to run this example.
 
 ## Camel Examples
 Camel is a powerful framework to build message oriented applications. See repository TODO for an introduction and examples.
