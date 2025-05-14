@@ -10,7 +10,9 @@
     <!--
         The <broker> element is used to configure the ActiveMQ broker.
     -->
-    <broker xmlns="http://activemq.apache.org/schema/core" brokerName="single" dataDirectory="${activemq.data}">
+    <broker xmlns="http://activemq.apache.org/schema/core" 
+        brokerName="slave" 
+        dataDirectory="${activemq.data}">
 
         <destinationPolicy>
             <policyMap>
@@ -52,8 +54,9 @@
             http://activemq.apache.org/persistence.html
         -->
         <persistenceAdapter>
-            <kahaDB directory="${activemq.data}/kahadb"/>
-        </persistenceAdapter>  
+            <kahaDB directory="C:/Users/kronp/workspaces/dev-trainings/activemq-classic-tutorial/masterslave/persistence"/>
+        </persistenceAdapter>
+
 
           <!--
             The systemUsage controls the maximum amount of space the broker will
@@ -83,7 +86,6 @@
         <transportConnectors>
             <!-- DOS protection, limit concurrent connections to 1000 and frame size to 100MB -->
             <transportConnector name="openwire" uri="tcp://0.0.0.0:61616?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
-            <transportConnector name="ws" uri="ws://0.0.0.0:61614?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
         </transportConnectors>
 
         <!-- destroy the spring context on shutdown to stop jetty -->

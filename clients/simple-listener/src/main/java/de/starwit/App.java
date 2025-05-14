@@ -8,6 +8,10 @@ import jakarta.jms.MessageListener;
 import jakarta.jms.Session;
 import jakarta.jms.TextMessage;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import org.apache.logging.log4j.LogManager;
@@ -20,11 +24,15 @@ public class App {
     private static Connection connection;
     private static Session session;
 
+    static Properties config = new Properties();
+
     public static void main(String[] args) {
-        String url = "tcp://127.0.0.1:61616";
-        url = "failover:(tcp://127.0.0.1:61616,tcp://127.0.0.1:61626)";
-        String user = "admin";
-        String pw = "admin";
+        loadProperties();
+
+        String url = config.getProperty("broker.url");
+        String user = config.getProperty("broker.username");
+        String pw = config.getProperty("broker.password");
+        String queueName = config.getProperty("client.target");
 
         factory = new ActiveMQConnectionFactory(user, pw, url);
         factory.setClientID("sample-client-"+factory.toString());
@@ -33,7 +41,7 @@ public class App {
             connection = factory.createConnection();
             connection.start();
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            MessageConsumer consumer = session.createConsumer(session.createQueue("broker-test"));
+            MessageConsumer consumer = session.createConsumer(session.createQueue(queueName));
             consumer.setMessageListener(new MyListener());
             log.info("Connected to broker");
         } catch (JMSException e) {
@@ -57,6 +65,21 @@ public class App {
             } catch (InterruptedException e) {
                 log.warn("Message consuming Thread got interrupted " + e.getMessage());
             }
+        }
+    }
+
+    private static void loadProperties() {
+        try (InputStream in = App.class.getClassLoader().getResourceAsStream("application.properties")) {
+            if(in != null) {
+                config.load(in);
+            } else {
+                log.error("Can't find property file");
+                System.exit(1);
+            }
+            
+        } catch (IOException e) {
+            log.error("Can't load property file, exiting " + e.getMessage());
+            System.exit(1); // exit with error status
         }
     }
 

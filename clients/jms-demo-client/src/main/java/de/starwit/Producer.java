@@ -17,7 +17,8 @@ public class Producer {
     private static ActiveMQConnectionFactory factory;
     public static void main( String[] args ) throws JMSException, InterruptedException {
 
-        url = "failover:(tcp://127.0.0.1:61616,tcp://127.0.0.1:61626)";
+        //url = "failover:(tcp://127.0.0.1:61616,tcp://127.0.0.1:61626)";
+        url = "failover:(tcp://127.0.0.1:61616)";
 
         factory = new ActiveMQConnectionFactory(user, pw, url);
 
