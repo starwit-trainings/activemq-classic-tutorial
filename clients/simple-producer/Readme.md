@@ -1,9 +1,11 @@
-# Simple Listener
-In this repo a sample message producer and consumer are implemented. Basic idea is to provide tooling that sends continously messages such that you can test the various modes of the ActiveMQ JMS broker. 
+# Simple Producer
+This is a simple client, that sends message to a queue.
 
 ## How to run
 
-## More info
+```bash
+mvn clean package
+java -jar target/http-producer.jar
+```
 
-Connection URI config
-https://activemq.apache.org/connection-configuration-uri
+Configure broker settings in [application.properties](src/main/resources/application.properties). 
