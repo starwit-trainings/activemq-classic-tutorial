@@ -14,6 +14,8 @@ On your computer the following software needs to be installed:
 Optional
 * Microsoft Terminal
 * Docker
+* [Java Mission Control](https://jdk.java.net/jmc/9/)
+* [HawtIO](https://github.com/hawtio/hawtio/releases)
 
 ### Clone Code
 Use git to download code from this repository to your computer. Open a command prompt/shell and use the following command to clone repository into current directory:
@@ -113,11 +115,19 @@ If you started both instances, you should see log output like follows:
 A message broker is of little use, if no application is using it. 
 
 ### Using Jolokia API
+ActiveMQ ships with a powerful API called Jolokia. With that API almost everything in a running broker instance can be manipulated. This example shows how to connect to this API and some usage examples.
+
+Start [hello world](#hello-world) example omitting producer client. Then execute following commands:
+```bash
+cd clients/jolokia-client
+mvn clean package
+java -jar target/jolokia-client.jar
+```
 
 ### Using HTTP as transport
 This example shows you, how to send messages using HTTP(s) as transport protocol- __NOTE__: There are many _much better_ ways to achieve this. See sections [Jolokia API](#using-jolokia-api) or [Camel](#camel-examples) for better approaches.
 
-Start [hello world](#hello-world) example omitting producer client. Instead run:
+Start [hello world](#hello-world) example omitting producer client. Then execute following commands:
 ```bash
 cd clients/http-producer
 mvn clean package
