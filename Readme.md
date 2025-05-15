@@ -98,7 +98,11 @@ For an introduction to ActiveMQ console see [introduction](activemq-intro.md#adm
 
 
 ### Replica Setup
-In this example two broker instances will be started and configured as each other's replicas. 
+In this example two broker instances will be started and configured as each other's replicas. Replica means, that two (or more) instances will share their state. That means if one goes down, the other can take over. Following image shows, how this works.
+
+![Replica](img/Replica-Concept.png)
+
+Note that it very much depends on the used communication protocol, if and how clients get notified about outage of a replica instance.
 
 Open two command prompts and start each instance like so:
 
@@ -110,6 +114,24 @@ If you started both instances, you should see log output like follows:
 ![Replica Setup](img/setup_replica.png)
 
 ### Master/Slave setup
+ActiveMQ brokers can also run in a setup, where outage of one node is detected and a second broker is taking over. Example implemented here, is using shared storage and both broker instances run on the same machine. This way the second instance can take over all connections and clients can continue messaging with minimal outage. 
+
+Next image shows how this example is implemented.
+
+![masterslave](img/master-slave.png)
+
+Start both instances with the following commands. Note you need to command prompts.
+```bash
+cd masterslave/master/bin
+./master start
+```
+
+```bash
+cd masterslave/slave/bin
+./slave start
+```
+Once both instances are running, you should see the following log output.
+![masertslave_run](img/master_slave01.png)
 
 ## Java Examples
 A message broker is of little use, if no application is using it. 
