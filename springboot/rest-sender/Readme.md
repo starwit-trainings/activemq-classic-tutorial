@@ -1,19 +1,18 @@
-# Messaging Example
-This project demonstrates how to use JMS messaging with Spring Boot. It starts an integrated Artemis instance and reveices from two queues.  
+# Rest message sender
+This project demonstrates how to use forward messages from REST services to a JMS queue.
 
 ## Topics
+* REST service + Swagger UI
 * Messaging with JMS
-* Sending/Receiving
-* De/Serialize Java objects vs JSON
-* Run integrated JMS server
-* Receiving from multiple queues
 * Spring Boot scheduled tasks
 
 ## How to Run
+```bash
+mvn clean package
+java -jar target/messaging-demo-0.0.1-SNAPSHOT.jar
+``` 
 
-    mvn clean package
-    java -jar target/messaging-demo-0.0.1-SNAPSHOT.jar 
-
-## Exercises
-* Save received users to database
-* Connect to external Artemis instance & receive/send messages
+## Tasks
+* Send a heartbeat message every 20 seconds
+* Create new REST service, that gets object as input and forward this object to queue
+* Bonus challenge: build rest service, that returns number of messages in queue. Use Jolokia API.

@@ -1,4 +1,4 @@
-package de.starwit.messagingdemo;
+package de.starwit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,13 +19,8 @@ public class ScheduledSender {
     @Autowired
     JmsTemplate jmsTemplate;
 
-    private int number = 0;
-
-    @Scheduled(fixedRate = 2000)
+    @Scheduled(fixedRate = 20000)
     public void sendMessage() {
-        log.info("sending message number " + number);
-        jmsTemplate.convertAndSend("users", new MyUser("TestUser-" + number, "hans@meiser.com"));        
-        jmsTemplate.send(queueName, s->s.createObjectMessage(new MyUserSerializable("TestUser-" + number, "hans@meiser.com")));
-        number++;
+        log.info("sending scheduled message");
     }
 }
