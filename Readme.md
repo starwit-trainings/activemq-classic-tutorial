@@ -133,6 +133,10 @@ cd masterslave/slave/bin
 Once both instances are running, you should see the following log output.
 ![masertslave_run](img/master_slave01.png)
 
+Now you can access broker using [simple listener](clients/simple-listener/Readme.md) / [simple producer](clients/simple-producer/Readme.md). In order to test take over of second instance shutdown master (ctrl+c). In the following screenshot you'll see sample output.
+
+![masterslave-takeover](img/master_slave02.png)
+
 ## Java Examples
 A message broker is of little use, if no application is using it. 
 
