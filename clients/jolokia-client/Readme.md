@@ -10,3 +10,8 @@ java -jar target/jolokia-client.jar
 ```
 
 Configure broker settings in [application.properties](src/main/resources/application.properties). 
+
+## Tasks
+* Create a new queue
+* Read queue length & send/delivered messages
+* Get subscriber/producer count

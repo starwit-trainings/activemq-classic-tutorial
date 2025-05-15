@@ -136,5 +136,11 @@ java -jar target/http-producer.jar
 
 This example sends messages via a http tunnel. Next to the drawbacks of this protocol, note, that some pretty outdated libraries are necessary to run this example.
 
+## Spring Boot Examples
+
+### Rest Converter
+
+### Scheduled Sender
+
 ## Camel Examples
 Camel is a powerful framework to build message oriented applications. See repository TODO for an introduction and examples.
