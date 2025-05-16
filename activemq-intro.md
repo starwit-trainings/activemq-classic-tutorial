@@ -1,9 +1,15 @@
 # Introduction to ActiveMQ Administration
-This document shall provide a brief introduction to the management of ActiveMQ.
+This document shall provide a brief introduction to the management of ActiveMQ. Please refer to the project's documentation for more details.
 
 ## Admin Console
-ActiveMQ ships with an administration console that offers information and allows to send test messages. 
+ActiveMQ ships with an administration console that offers information and allows to send test messages. This section very quickly introduces most important parts.
 
+![Admin Console](img/admin_console_queues.png)
+![Admin Console](img/admin_console_topics.png)
+![Admin Console](img/admin_console_send.png)
+![Admin Console](img/admin_console_subscribers.png)
+![Admin Console](img/admin_console_network.png)
+![Admin Console](img/admin_console_network.png)
 
 ### Tasks
 * Create a queue _sample-queue_ and send a message
