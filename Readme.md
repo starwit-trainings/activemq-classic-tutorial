@@ -36,66 +36,23 @@ activemq-classic-tutorial
 apache-activemq-6.1.6
 ```
 
+# Messaging Concepts
+In order to take a deeper dive into ActiveMQ's capabilities, some basic concepts needs to be addressed. So sectio [Messaging concepts](messaging-concepts.md) provides an overview of these ideas.
+
 # Examples
 In this section all examples in this repository are introduced. You can work with these examples in any order you like.
 
 ## Hello World
-This first example will start a single ActiveMQ broker, connects a message receiver and a messager sender to it.
-
-### Start Broker
-The following commands will start a single broker instance. Open a shell (Windows: command prompt, Linux: e.g. Bash) in the base folder of this repository. Choose commands for your OS.
-<table>
-<tr>
-<td> Windows </td> <td> Linux </td>
-</tr>
-<tr>
-<td> 
-
-```powershell
-cd single\bin
-single.bat start
-```
-
-</td>
-<td>
-
-```bash
-cd single/bin
-./single start
-```
-
-</td>
-</tr>
-</table>
-
-Once broker is running message listener and producer can be connected.
-
-### Start Message Listener/Producer
-Use the following (Linux) commands to run listener and producer. Adapt if you use Windows.
-```bash
-cd clients/simple-listener
-mvn clean package
-java -jar target/simple-listener.jar
-```
-
-```bash
-cd clients/simple-producer
-mvn clean package
-java -jar target/simple-producer.jar
-```
-
-If everything is started properly you should see an output like this:
-
-![hello-world](img/hello-world.png)
+In every programming language it is tradition to write a program that outputs hello world. In messaging things are a bit more complicated. So the [hello world section](hello-world.md) explains how to send your first message via a message broker.
 
 ## ActiveMQ Setups
-
+ActiveMQ is versatile communication broker and thus be run in various configurations. Section [ActiveMQ Setups](activemq-examples.md) provides examples for the most important setups.
 
 ## Java Examples
 A message broker is of little use, if no application is using it. One way to use ActiveMQ is by using the Java programming language. See [Java section](java-examples.md) for how to connect to ActiveMQ and various examples.
 
 ## Spring Boot Examples
-While Java is a powerful programming language, building applications needs more. So this section will show you, how to use the Spring Boot to connect to ActiveMQ and how to integrate messaging in your applications.
+While Java is a powerful programming language, building applications needs more. So this section will show you, how to use the Spring Boot to connect to ActiveMQ and how to integrate messaging in your applications. All examples can be found in [Spring Boot section](spring-examples.md).
 
 ## Camel Examples
 Camel is a powerful framework to build message oriented applications. See section [Camel](camel-examples.md) for an introduction and examples.
