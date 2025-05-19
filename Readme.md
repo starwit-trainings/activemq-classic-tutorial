@@ -12,8 +12,9 @@ On your computer the following software needs to be installed:
 * an IDE to write code - [Visual Studio Code](https://code.visualstudio.com/) is recommended.
 
 Optional
-* Microsoft Terminal
-* Docker
+* [Microsoft Terminal](https://github.com/microsoft/terminal/releases) nicer Terminal for Windows, Standard on Windows 11
+* Docker - running containers
+* [JQ](https://jqlang.org/download/) - handy tool to work with JSON
 * [Java Mission Control](https://jdk.java.net/jmc/9/)
 * [HawtIO](https://github.com/hawtio/hawtio/releases)
 
@@ -88,85 +89,13 @@ If everything is started properly you should see an output like this:
 ![hello-world](img/hello-world.png)
 
 ## ActiveMQ Setups
-This list of examples deal with running and configuring ActiveMQ broker.
 
-### Simple Broker - Explore Admin Console
-
-Start broker as desrcibed in example _Hello Word_. Once broker is started, adminstration console can be accessed via http://localhost:8161/ using admin/admin as credentials.
-
-For an introduction to ActiveMQ console see [introduction](activemq-intro.md#admin-console).
-
-
-### Replica Setup
-In this example two broker instances will be started and configured as each other's replicas. Replica means, that two (or more) instances will share their state. That means if one goes down, the other can take over. Following image shows, how this works.
-
-![Replica](img/Replica-Concept.png)
-
-Note that it very much depends on the used communication protocol, if and how clients get notified about outage of a replica instance.
-
-Open two command prompts and start each instance like so:
-
-```bash
-cd replica01/bin
-./replica01 start
-```
-If you started both instances, you should see log output like follows:
-![Replica Setup](img/setup_replica.png)
-
-### Master/Slave setup
-ActiveMQ brokers can also run in a setup, where outage of one node is detected and a second broker is taking over. Example implemented here, is using shared storage and both broker instances run on the same machine. This way the second instance can take over all connections and clients can continue messaging with minimal outage. 
-
-Next image shows how this example is implemented.
-
-![masterslave](img/master-slave.png)
-
-Start both instances with the following commands. Note you need to command prompts.
-```bash
-cd masterslave/master/bin
-./master start
-```
-
-```bash
-cd masterslave/slave/bin
-./slave start
-```
-Once both instances are running, you should see the following log output.
-![masertslave_run](img/master_slave01.png)
-
-Now you can access broker using [simple listener](clients/simple-listener/Readme.md) / [simple producer](clients/simple-producer/Readme.md). In order to test take over of second instance shutdown master (ctrl+c). In the following screenshot you'll see sample output.
-
-![masterslave-takeover](img/master_slave02.png)
 
 ## Java Examples
-A message broker is of little use, if no application is using it. 
-
-### Using Jolokia API
-ActiveMQ ships with a powerful API called Jolokia. With that API almost everything in a running broker instance can be manipulated. This example shows how to connect to this API and some usage examples.
-
-Start [hello world](#hello-world) example omitting producer client. Then execute following commands:
-```bash
-cd clients/jolokia-client
-mvn clean package
-java -jar target/jolokia-client.jar
-```
-
-### Using HTTP as transport
-This example shows you, how to send messages using HTTP(s) as transport protocol- __NOTE__: There are many _much better_ ways to achieve this. See sections [Jolokia API](#using-jolokia-api) or [Camel](#camel-examples) for better approaches.
-
-Start [hello world](#hello-world) example omitting producer client. Then execute following commands:
-```bash
-cd clients/http-producer
-mvn clean package
-java -jar target/http-producer.jar
-```
-
-This example sends messages via a http tunnel. Next to the drawbacks of this protocol, note, that some pretty outdated libraries are necessary to run this example.
+A message broker is of little use, if no application is using it. One way to use ActiveMQ is by using the Java programming language. See [Java section](java-examples.md) for how to connect to ActiveMQ and various examples.
 
 ## Spring Boot Examples
-
-### Rest Converter
-
-### Scheduled Sender
+While Java is a powerful programming language, building applications needs more. So this section will show you, how to use the Spring Boot to connect to ActiveMQ and how to integrate messaging in your applications.
 
 ## Camel Examples
-Camel is a powerful framework to build message oriented applications. See repository TODO for an introduction and examples.
+Camel is a powerful framework to build message oriented applications. See section [Camel](camel-examples.md) for an introduction and examples.
