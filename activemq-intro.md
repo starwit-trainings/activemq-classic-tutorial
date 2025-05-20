@@ -1,6 +1,16 @@
 # Introduction to ActiveMQ Administration
 This document shall provide a brief introduction to the management of ActiveMQ. Please refer to the project's documentation for more details.
 
+Topics
+- Admin Console
+- Management API / Jolokia
+- Client connection options
+- Replication
+- Master/Slave
+- Persistence
+- Security
+- Instrumentation
+
 ## Admin Console
 ActiveMQ ships with an administration console that offers information and allows to send test messages. This section very quickly introduces most important parts. Compared to other message systems, ActiveMQ admin console offers only basic functions. This section will introduce most important dialogues.
 
@@ -144,6 +154,8 @@ __Please note__ that high-availability is very hard to achieve, as many, many mo
     </transportConnectors>
 ```
 
+Reference: https://activemq.apache.org/components/classic/documentation/networks-of-brokers
+
 ### Tasks
 * 
 
@@ -167,3 +179,31 @@ Once connected, you can browse all available MBeans (JMX' way to expose data and
 ### HawtIO
 
 ### ActiveMQ, Prometheus, Grafana
+Another way to get insights of a running ActiveMQ instance is by extracting data via a Java agent. 
+
+Start instance _single-jmx_ like so:
+<table>
+<tr>
+<td> Windows </td> <td> Linux </td>
+</tr>
+<tr>
+<td> 
+
+```powershell
+cd single-jmx\bin
+single.bat start
+```
+
+</td>
+<td>
+
+```bash
+cd single-jmx/bin
+./single start
+```
+
+</td>
+</tr>
+</table>
+
+Metrics should now be available under http://localhost:7878
