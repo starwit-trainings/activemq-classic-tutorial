@@ -67,6 +67,37 @@ Once you send messages, you should see an output like this:
 * Shutdown all listeners and let producer send more messages. Restart a listener.
 * __Bonus Challenge:__ Run replica setup and connect three listeners. Run producer and shutdown one instance.
 
+## Message Content: Send JSON
+A quite popular format for sending data is [JSON](https://en.wikipedia.org/wiki/JSON). It is especially useful, when exchanging messages between multiple programming technologies. It also (fairly) human readable. 
+
+As always you need a running broker, so start [single](activemq-examples.md#simple-broker---explore-admin-console) instance.
+
+Now run producer/listener
+
+```bash
+cd clients/json-listener
+mvn clean package
+java -jar target/json-listener.jar
+```
+
+```bash
+cd clients/json-producer
+mvn clean package
+java -jar target/json-producer.jar
+```
+
+### Tasks
+* Run example
+* Try to send a JSON message from admin console
+* Change producer to send a list of StudentResult, adapt listener to parse list.
+* Look at StudentResult Java class - any thoughts, why example approach will not work well?
+
+## Message Content: Send XML
+TODO
+
+## Message Content: Serialized Java Objects
+TODO
+
 ## Using Jolokia API
 ActiveMQ ships with a powerful API called Jolokia. With that API almost everything in a running broker instance can be manipulated. This example shows how to connect to this API and some usage examples.
 

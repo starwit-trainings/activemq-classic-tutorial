@@ -152,6 +152,14 @@ In the **publish/subscribe** model, messages are sent to a **topic**, and **all 
 - **JMS Provider**: The messaging system implementation (e.g., ActiveMQ, RabbitMQ with JMS support).
 
 ---
+### Message Types
+- **TextMessage**: Plain text message. Use this to send string based protocols like JSON, XML
+- **ObjectMessage**: Serialized Java Objects
+- **MapMessage**: Key/value map
+- **BytesMessage**: Binary data
+- **StreamMessage**: A stream of Java primitives
+- For more details see: https://jakarta.ee/learn/docs/jakartaee-tutorial/current/messaging/jms-concepts/jms-concepts.html#_message_bodies
+---
 
 ### Version History
 
