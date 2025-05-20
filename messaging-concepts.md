@@ -12,6 +12,7 @@ In this section some fundamental concepts are introduced.
 * Communication Patterns
 * Java Messaging System
 * Communication Protocols
+* Notes on message content
 * Notes on High-Availability
 
 ---
@@ -102,6 +103,8 @@ In the **point-to-point** model, messages are sent to a specific **queue**, and 
 ---
 <img src="img/concept-queue.jpg" alt="Fire & Forget" width="900"/>
 
+**Question**: In which scenarios would you use queues?
+
 ---
 
 ### 2. Publish/Subscribe (Topic-based)
@@ -121,7 +124,10 @@ In the **publish/subscribe** model, messages are sent to a **topic**, and **all 
 - **Decoupling**:
   - Supports one-to-many communication patterns; producers remain unaware of how many consumers exist.
 ---
+
 <img src="img/concept-topic.jpg" alt="Fire & Forget" width="900"/>
+
+**Question**: In which scenarios would you use topics?
 
 ---
 
@@ -169,7 +175,25 @@ JMS is widely used in enterprise applications where decoupled, reliable communic
 ---
 
 ## Protocols
-* Protocol overview
+* Many messaging protocols
+* Usually quite old -> stability much more important than latest features
+* Multi-language
+* Protocol Examples
+  * MQTT
+  * AMQP
+  * STOMP
+  * WebSockets
+
+---
+
+## Message Content
+* Everything so far just defines message transport/delivery
+* Syntax can be standardized
+  * JSON
+  * Serialized (Java) Objects
+  * Protobuf
+  * XML
+* Semantic application specific 
 
 ---
 
