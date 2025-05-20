@@ -33,7 +33,7 @@ public class App {
         String url = config.getProperty("broker.url");
         String user = config.getProperty("broker.username");
         String pw = config.getProperty("broker.password");
-        String queueName = config.getProperty("client.target");
+        String topicName = config.getProperty("client.target");
 
         factory = new ActiveMQConnectionFactory(user, pw, url);
         factory.setClientID("sample-client-" + generateRandomString());
@@ -42,7 +42,7 @@ public class App {
             connection = factory.createConnection();
             connection.start();
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            MessageConsumer consumer = session.createConsumer(session.createQueue(queueName));
+            MessageConsumer consumer = session.createConsumer(session.createTopic(topicName));
             consumer.setMessageListener(new MyListener());
             log.info("Connected to broker");
         } catch (JMSException e) {
@@ -91,7 +91,7 @@ public class App {
         public void onMessage(Message message) {
             TextMessage msg = (TextMessage) message;
             try {
-                log.info("received message" + msg.getText());
+                log.info("message received: " + msg.getText());
             } catch (JMSException e) {
                 log.warn("Can't parse text message " + e.getMessage());
             }
