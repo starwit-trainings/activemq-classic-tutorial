@@ -26,13 +26,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@SpringBootTest(classes = CamelApplication.class)
 @CamelSpringBootTest
-@SpringBootTest(classes = MyCamelApplication.class)
 @EnableRouteCoverage
-public class MyCamelApplicationJUnit5Test {
+public class CamelApplicationTest {
 
     @Autowired
     private CamelContext camelContext;
