@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<studentresult>
+  <firstName>John</firstName>
+  <name>Doe</name>
+  <examName>ActiveMQ Tutorial</examName>
+  <grade>3</grade>
+</studentresult>

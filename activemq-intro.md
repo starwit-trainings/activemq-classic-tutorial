@@ -39,7 +39,7 @@ Please note, that admin console is a Java webapplication that is hosted by the i
 ---
 
 ### Send Test Messages
-<img src="img/admin_console_send.png" alt="Fire & Forget" width="900"/>
+<img src="img/admin_console_send.png" alt="Fire & Forget" width="1200"/>
 
 ---
 
@@ -383,11 +383,16 @@ As a Java application ActiveMQ can be instrumented and monitored using many stan
 ---
 
 ### Java Mission Control
-ActiveMQ makes use of Java's JMX interface and thus any JMX tool can be used, to observe a running broker. One of those tools is Java Mission Control. If you run in on the same machine as your broker instance, you can connect it right away. 
+ActiveMQ makes use of Java's JMX interface and thus any JMX tool can be used, to observe a running broker. One of those tools is Java Mission Control. If you run in on the same machine as your broker instance, you can connect it right away.
+
+* For a generell intro to JMX see here: https://en.wikipedia.org/wiki/Java_Management_Extensions
+* Download JMC here: https://jdk.java.net/jmc/9/
+
+---
 
 Once connected, you can browse all available MBeans (JMX' way to expose data and functions). See the following picture for an example:
 
-![JMC](img/JMC-add-queue.png)
+<img src="img/JMC-add-queue.png" alt="Fire & Forget" width="700"/>
 
 ---
 #### Tasks
