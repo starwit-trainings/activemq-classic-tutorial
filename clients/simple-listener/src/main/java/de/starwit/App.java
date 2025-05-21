@@ -38,10 +38,13 @@ public class App {
         factory = new ActiveMQConnectionFactory(user, pw, url);
         factory.setClientID("sample-client-" + generateRandomString());
 
+        log.info("Connecting to broker " + url);
+
         try {
             connection = factory.createConnection();
             connection.start();
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+            log.info("Try to listen to queue " + queueName);
             MessageConsumer consumer = session.createConsumer(session.createQueue(queueName));
             consumer.setMessageListener(new MyListener());
             log.info("Connected to broker");
