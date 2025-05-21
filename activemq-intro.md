@@ -162,6 +162,7 @@ Reference: https://activemq.apache.org/components/classic/documentation/networks
 ## Security
 * CORS/CSRF
 * Authentication
+* Resource creation
 
 ## Persistence
 
@@ -177,9 +178,10 @@ Once connected, you can browse all available MBeans (JMX' way to expose data and
 ![JMC](img/JMC-add-queue.png)
 
 ### HawtIO
+TODO
 
 ### ActiveMQ, Prometheus, Grafana
-Another way to get insights of a running ActiveMQ instance is by extracting data via a Java agent. 
+Another way to get insights of a running ActiveMQ instance is by extracting data via a Java agent. A pre-configured instance in folder single-jmx is provided, that exposes metrics on port 7878. In this example these metrics are collected by Prometheus and visualized with Grafana. Setup shall provide a development environment, to explore metrics and visualizations. It is not intended to be used in a productive environment.
 
 Start instance _single-jmx_ like so:
 <table>
@@ -206,4 +208,35 @@ cd single-jmx/bin
 </tr>
 </table>
 
-Metrics should now be available under http://localhost:7878
+Metrics should now be available under http://localhost:7878/metrics
+
+#### Start Prometheus & Grafana
+Prometheus is a metric collector and is used in many monitoring setups. Grafana is a visualization tool, that can be used to create dashboards displaying metric data. In order run and configure both tools, we can either use Docker compose or manual setup.
+
+__Docker Compose__
+
+Docker is necessary to run compose scripts. Install for your [Linux](https://docs.docker.com/engine/install/) distribution or [Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/) for Windows.
+
+Now run Docker compose file like so:
+```bash
+cd docker-compose
+docker compose -f compose-monitoring.yaml up
+```
+This is going to run Prometheus (http://localhost:9090/) and Grafana (http://localhost:3000/). Both are pre-configured such that:
+* Prometheus collects metrics from ActiveMQ
+* Grafana uses Prometheus as data source
+* An ActiveMQ dashboard displaying metrics
+
+__Manual Setup__
+
+Download Prometheus here: https://prometheus.io/download/ In folder [prometheus](docker-compose/prometheus/) you find a config file, that can be used to run Prometheus. Check that metrics are collected.
+
+To setup Grafana manually:
+* download and install Grafana: https://grafana.com/grafana/download
+* configure Prometheus data source
+* import [Dashboard](docker-compose/grafana/provisioning/dashboards/activemq/activemq.json)
+
+
+#### Tasks
+* Run setup
+* Connect producer/listener and observe output
