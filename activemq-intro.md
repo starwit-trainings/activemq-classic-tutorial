@@ -255,17 +255,35 @@ https://activemq.apache.org/components/classic/documentation/uri-protocols
 ## Replication
 One of the core features of message brokers, is the possibility to run multiple instances. This way setups that are able to deal with with high loads become possible as well as minimizing outages via replication. This section is a (brief) introduction into this topic. 
 
+Reference: https://activemq.apache.org/components/classic/documentation/networks-of-brokers
+
 __Please note__ that high-availability is very hard to achieve, as many, many more aspects than message broker config needs to be configured and set up properly. So if you aim at HA start by familiarizing yourself with the general concept. A good starting point is [Wikipedia](https://en.wikipedia.org/wiki/High_availability).
 
+---
+
 ### Static
+Most basic configuration of replicas is defining a fixed set of broker instances. Any instance then needs to know each other. Here is an example, how to configure this connection:
 
 ```xml
     <networkConnectors>
         <networkConnector uri="static:(tcp://localhost:61616)" />
     </networkConnectors>  
 ```
+[See here for](broker-configs/replica/replica01/conf/activemq.xml) full config file.
+
+
+Example setup can be found in folder broker-configs/replica. 
+
+Find in section [Replication](activemq-examples.md#replica-setup) instructions how to run the example configuration.
+
+__Question:__ Any idea why this approach my not scale?
+
+
 ---
 ### Discovery/Multicast
+ActiveMQ also supports dynamic broker configuration. Here new instances discover already running brokers and are then ad-hoc added.
+
+Necessary config in [activemq.xml](broker-configs/replica/replica01/conf/activemq.xml) looks like this
 ```xml
     <networkConnectors>
       <networkConnector uri="multicast://default"/>
@@ -276,10 +294,27 @@ __Please note__ that high-availability is very hard to achieve, as many, many mo
     </transportConnectors>
 ```
 
-Reference: https://activemq.apache.org/components/classic/documentation/networks-of-brokers
+Find in section [Replication](activemq-examples.md#replica-setup) instructions how to run the example configuration.
 
-### Tasks
-* 
+__Question:__ Does multicast work in dynamic environemnts and why/why not?
+
+---
+
+### Master/Slave
+Another replication setup is called master/slave and here two or more instances can run on the same machine and only one is active, while the other ones waiting to stand-in if master goes down.
+
+This can be achieved by sharing persistence storage between instance. In our example this will look like this:
+
+```xml
+    <persistenceAdapter>
+        <kahaDB directory="../../persistence"/>
+    </persistenceAdapter>
+```
+__Note:__ This configuration is not advisable in productive environments!
+
+Full example and instructions to run are located [here](activemq-examples.md#masterslave-setup).
+
+__Question:__ Does this setup make sense in technologies like Kubernetes?
 
 ---
 ## Security
@@ -426,7 +461,7 @@ single.bat start
 
 ```bash
 cd single-jmx/bin
-./single start
+./single.sh start
 ```
 
 </td>
