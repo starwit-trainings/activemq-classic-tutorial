@@ -9,8 +9,7 @@ public class MyRouteBuilder extends RouteBuilder {
         from("file:sampledata?noop=true&include=.*\\.xml")
                 .routeId("sendToActiveMQ")
                 .convertBodyTo(String.class)
-                .to("activemq:queue:broker-test")
+                .to("activemq:queue:student-queue")
                 .log("Sent to ActiveMQ: ${file:name}");
     }
-
 }

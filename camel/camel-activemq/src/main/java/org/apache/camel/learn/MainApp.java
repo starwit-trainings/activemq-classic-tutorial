@@ -23,6 +23,7 @@ public class MainApp {
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("admin", "admin", "tcp://localhost:61616");
         context.addComponent("activemq", JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
         context.addRoutes(new MyRouteBuilder());
+        context.addRoutes(new ReceiveRoute());
 
         // Register shutdown hook for graceful stop
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {

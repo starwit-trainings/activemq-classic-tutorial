@@ -1,18 +1,8 @@
-# Camel Java Router Project
-=========================
+# Camel and ActiveMQ
+Camel framework has connectors for a huge number of messaging systems. In this example Camel connects to ActiveMQ and sends/receives messages.
 
-## How to build
-
-To build this project use
-
-    mvn install
-
-## How to run
-
-You can run this example using
-
-    mvn camel:run
-
-## More information
-
-You can find more information about Apache Camel at the website: http://camel.apache.org/
+```bash
+cd camel/camel-activemq
+mvn clean package
+java -jar target/camel-activemq.jar
+```
