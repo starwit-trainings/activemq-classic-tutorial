@@ -22,7 +22,7 @@ public class MainApp {
         CamelContext context = new DefaultCamelContext();
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("admin", "admin", "tcp://localhost:61616");
         context.addComponent("activemq", JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
-        context.addRoutes(new MyRouteBuilder());
+        context.addRoutes(new SendRoute());
         context.addRoutes(new ReceiveRoute());
 
         // Register shutdown hook for graceful stop

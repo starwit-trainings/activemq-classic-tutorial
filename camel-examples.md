@@ -40,7 +40,25 @@ java -jar target/camel-helloworld.jar
 * Let's collect data about all participating schools
  * Create a number of XML files that contains info like school name and address
  * Create a new route, that is reading these files and add them to a list of all schools
+* __Bonus Challenge:__ Rebuild example using JSON files.
+
+## Camel and ActiveMQ
+Camel framework has connectors for a huge number of messaging systems. In this example Camel connects to ActiveMQ and sends/receives messages. Before running this example, run [single broker instance](activemq-examples.md#simple-broker---explore-admin-console).
+
+```bash
+cd camel/camel-activemq
+mvn clean package
+java -jar target/camel-activemq.jar
+```
+
+### Tasks
+* Run app
+* Add a second processing step to receiver and write content to file.
+* Add field schoolId to the [example snippets](camel/camel-activemq/sampledata/). Write a Java function, that gets details like school name, street name, ... and adds it to forwarded message.
+* Switch messaging to topics and connect [simple listener](java-examples.md#simple-listenerproducer)
 
 ## Camel and Spring Boot
+
+
 
 ## Camel, Spring Boot & ActiveMQ
