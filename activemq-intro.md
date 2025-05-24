@@ -9,15 +9,42 @@ footer: 'Starwit Technologies GmbH | ActiveMQ Introduction | Messaging Concepts'
 This document shall provide a brief introduction to the management of ActiveMQ. Please refer to the project's documentation for more details.
 
 Topics
+- Project History
 - Admin Console
 - Config Files Overview
 - Management API / Jolokia
 - Client connection options
-- Replication
-- Master/Slave
+- Replication /Master/Slave
 - Persistence
 - Security
 - Instrumentation
+
+---
+
+## 🚀 History of ActiveMQ Classic
+
+- **2004**: ActiveMQ project initiated by LogicBlaze (later acquired by IONA).
+- **2005**: Donated to the Apache Software Foundation; became a top-level Apache project.
+- **2006–2010**: Rapid adoption as a reliable, open-source JMS broker.
+  - Gained support for persistent messaging, clustering, and message selectors.
+- **2011**: Integrated with **Apache Camel**, enabling advanced routing and EIP patterns.
+- **2013–2016**: Maturity phase with support for:
+  - MQTT, AMQP, STOMP protocols
+  - Improved failover and store-and-forward features
+
+---
+
+## 🔧 ActiveMQ Classic – Recent Evolution  
+
+- **2017**: Apache ActiveMQ **Artemis** introduced as a next-gen broker.
+  - Based on HornetQ, optimized for performance and modern protocols.
+- **ActiveMQ Classic** remains:
+  - The **reference implementation for JMS 1.1 & 2.0**
+  - Actively maintained for **legacy compatibility**
+- **2020+**:
+  - Regular updates (6.x series), improved security and tooling.
+  - Widely used in traditional Java EE and Spring-based systems.
+- **Today**: Coexists with Artemis — still relevant for existing JMS infrastructure.
 
 ---
 
