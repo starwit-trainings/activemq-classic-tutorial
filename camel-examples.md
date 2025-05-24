@@ -58,7 +58,12 @@ java -jar target/camel-activemq.jar
 * Switch messaging to topics and connect [simple listener](java-examples.md#simple-listenerproducer)
 
 ## Camel and Spring Boot
+Camel can also used in conjunction with the Spring Boot framework. In this example Camel is started and a Spring bean is invoked for a fixed period. XML file sorting from hello world example is also executed.
 
-
+### Tasks
+* Run app
+* Make file folder configurable via application.properties
+* Add files to sample data folder and observe output
+* __Bonus Challenge:__ Read all XML snippets into a datastructure in memory.
 
 ## Camel, Spring Boot & ActiveMQ
