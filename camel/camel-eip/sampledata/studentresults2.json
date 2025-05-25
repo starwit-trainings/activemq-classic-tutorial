@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Starwit",
+        "firstName": "Markus",
+        "examName": "ActiveMQ Tutorial",
+        "grade": 2
+    },
+    {
+        "name": "Starwit",
+        "firstName": "Anett",
+        "examName": "ActiveMQ Tutorial",
+        "grade": 1
+    },
+    {
+        "name": "Starwit",
+        "firstName": "Anett",
+        "examName": "SpringBoot Tutorial",
+        "grade": 1
+    },
+    {
+        "name": "Starwit",
+        "firstName": "Markus",
+        "examName": "SpringBoot Tutorial",
+        "grade": 1
+    },
+    {
+        "name": "Starwit",
+        "firstName": "Florian",
+        "examName": "ActiveMQ Tutorial",
+        "grade": 1
+    }
+]

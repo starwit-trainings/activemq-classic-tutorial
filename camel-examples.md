@@ -58,8 +58,21 @@ java -jar target/camel-activemq.jar
 * Switch messaging to topics and connect [simple listener](java-examples.md#simple-listenerproducer)
 
 ## Enterprise Integration Patterns
+Main reason for Camel framework is not "just" sending/receiving messages, but to implement [enterprise integration patterns](https://www.enterpriseintegrationpatterns.com/). It is highly recommended to read the book!
+
+In this example one pattern is used. Via a queue a list of student result objects is received. This list is then parsed, split into individual objects and forwarded to another queue.
+
+```bash
+cd camel/camel-eip
+mvn clean package
+java -jar target/camel-eip.jar
+```
 
 ### Tasks
+* Run app
+* Observe output when running [simple listener](java-examples.md#simple-listenerproducer)
+* Look at _choice,when,otherwise_ from Camel hello world - can you route single objects to different queues?
+* __Bonus Challenge:__ Remove convert to String part and observe output - implement an object listener
 
 
 ## Camel and Spring Boot

@@ -92,6 +92,7 @@ public class App {
 
         @Override
         public void onMessage(Message message) {
+            log.info("received message of type " + message.getClass().getName());
             TextMessage msg = (TextMessage) message;
             try {
                 log.info("received message " + msg.getText());
