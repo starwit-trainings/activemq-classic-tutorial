@@ -57,8 +57,19 @@ java -jar target/camel-activemq.jar
 * Add field schoolId to the [example snippets](camel/camel-activemq/sampledata/). Write a Java function, that gets details like school name, street name, ... and adds it to forwarded message.
 * Switch messaging to topics and connect [simple listener](java-examples.md#simple-listenerproducer)
 
+## Enterprise Integration Patterns
+
+### Tasks
+
+
 ## Camel and Spring Boot
 Camel can also used in conjunction with the Spring Boot framework. In this example Camel is started and a Spring bean is invoked for a fixed period. XML file sorting from hello world example is also executed.
+
+```bash
+cd camel/springboot
+mvn clean package
+java -jar target/camel-activemq.jar
+```
 
 ### Tasks
 * Run app
@@ -67,3 +78,16 @@ Camel can also used in conjunction with the Spring Boot framework. In this examp
 * __Bonus Challenge:__ Read all XML snippets into a datastructure in memory.
 
 ## Camel, Spring Boot & ActiveMQ
+Putting it all together - in this example a Spring Boot app is using Camel to send/receive messages with ActiveMQ.
+
+```bash
+cd camel/springboot-activemq
+mvn clean package
+java -jar target/camel-example-spring-boot-activemq-4.11.0.jar
+```
+
+### Tasks
+* Run example
+* Change destination to topic and connect [simple listener](java-examples.md#simple-listenerproducer) accordingly
+* Add received messages to a List
+* __Bonus Challenge:__ Add a REST service, that returns list of received messages. [Hint](spring-examples.md#rest-converter)
