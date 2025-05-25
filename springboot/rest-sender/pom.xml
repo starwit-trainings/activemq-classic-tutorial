@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>de.starwit</groupId>
-	<artifactId>messaging-demo</artifactId>
+	<artifactId>rest-sender</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>messaging-demo</name>
 	<description>Messaging demo for Spring Boot</description>
