@@ -344,6 +344,37 @@ Full example and instructions to run are located [here](activemq-examples.md#mas
 __Question:__ Does this setup make sense in technologies like Kubernetes?
 
 ---
+
+## ☠️ Dead Letter Queues (DLQ) - Concept & Purpose
+
+- A **Dead Letter Queue** is a special queue that stores **undeliverable or failed messages**.
+- Used when:
+  - A message exceeds its **redelivery attempts**
+  - Message causes **processing errors**
+  - Expiration occurs before successful delivery
+- Purpose:
+  - Prevents message loss
+  - Enables post-mortem debugging or manual intervention
+  - Improves system reliability and observability
+
+---
+
+## 🔁 DLQ in Action - Example & Configuration
+
+- **Example (ActiveMQ Classic)**:
+  - Default DLQ: `ActiveMQ.DLQ`
+  - If a consumer fails to process a message repeatedly, it ends up here.
+- **Configuration Options**:
+  - `maximumRedeliveries`
+  - `deadLetterStrategy`
+  - Custom DLQ per destination
+- **Typical Workflow**:
+  1. Message fails repeatedly
+  2. Moved to DLQ
+  3. Admin inspects or reprocesses from DLQ
+
+> 🛠️ DLQs are essential for fault-tolerant and maintainable messaging systems.
+---
 ## Security
 
 * Broker instances so far not secured - don't use them in production
