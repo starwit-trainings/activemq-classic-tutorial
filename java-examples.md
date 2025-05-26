@@ -90,6 +90,7 @@ java -jar target/json-producer.jar
 * Run example
 * Try to send a JSON message from admin console
 * Change producer to send a list of StudentResult, adapt listener to parse list.
+* Create a CSV file that holds a list of student results. Read from this list and send all entries. [Hint](https://github.com/starwit-trainings/java-basics/blob/main/03-library/commons/src/main/java/de/starwit/CSVExamples.java)
 * Look at StudentResult Java class - any thoughts, why example approach will not work well?
 
 ## Message Content: Send XML

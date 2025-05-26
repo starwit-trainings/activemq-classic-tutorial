@@ -56,6 +56,7 @@ java -jar target/camel-activemq.jar
 * Add a second processing step to receiver and write content to file.
 * Add field schoolId to the [example snippets](camel/camel-activemq/sampledata/). Write a Java function, that gets details like school name, street name, ... and adds it to forwarded message.
 * Switch messaging to topics and connect [simple listener](java-examples.md#simple-listenerproducer)
+* __Bonus Challenge:__ Add a CSV file that contains a list of student results, read from this list and send each entry as message.
 
 ## Enterprise Integration Patterns
 Main reason for Camel framework is not "just" sending/receiving messages, but to implement [enterprise integration patterns](https://www.enterpriseintegrationpatterns.com/). It is highly recommended to read the book!
