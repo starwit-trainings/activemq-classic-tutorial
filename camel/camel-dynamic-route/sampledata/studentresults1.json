@@ -1,0 +1,16 @@
+[
+    {
+      "firstName": "James",
+      "name": "Strachan",
+      "examName": "ActiveMQ Tutorial",
+      "grade": 1,
+      "schoolId" : "school-12345678"
+    },
+    {
+      "firstName": "Claus",
+      "name": "Ibsen",
+      "examName": "Camel Core",
+      "grade": 2,
+      "schoolId" : "school-12345679"
+    }
+  ]

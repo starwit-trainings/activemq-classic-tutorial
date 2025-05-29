@@ -91,8 +91,8 @@
                 uri="tcp://0.0.0.0:61616?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600" />
             <transportConnector name="ws"
                 uri="ws://0.0.0.0:61614?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600" />
-            <transportConnector name="http"
-                uri="http://0.0.0.0:8080?transport.maximumConnections=1000&amp;transport.wireFormat.maxFrameSize=104857600&amp;transport.keepAlive=true&amp;transport.trace=true&amp;transport.useKeepAlive=true&amp;transport.connectionTimeout=30000" />
+<!--             <transportConnector name="http"
+                uri="http://0.0.0.0:8080?transport.maximumConnections=1000&amp;transport.wireFormat.maxFrameSize=104857600&amp;transport.keepAlive=true&amp;transport.trace=true&amp;transport.useKeepAlive=true&amp;transport.connectionTimeout=30000" /> -->
         </transportConnectors>
 
         <!-- destroy the spring context on shutdown to stop jetty -->
@@ -106,7 +106,7 @@
             <topic physicalName="prefonfigured.topic" />
         </destinations>
 
-        <plugins>
+<!--         <plugins>
             <jaasAuthenticationPlugin configuration="activemq" />
             <authorizationPlugin>
                 <map>
@@ -119,7 +119,7 @@
                     </authorizationMap>
                 </map>
             </authorizationPlugin>
-        </plugins>
+        </plugins> -->
 
     </broker>
 

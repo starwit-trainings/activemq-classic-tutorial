@@ -75,6 +75,22 @@ java -jar target/camel-eip.jar
 * Look at _choice,when,otherwise_ from Camel hello world - can you route single objects to different queues?
 * __Bonus Challenge:__ Remove convert to String part and observe output - implement an object listener
 
+# Camel Dynamic Routing
+Camel framework has connectors for a huge number of messaging systems. In this example a list of student results objects is send to a queue, a receiver splits these lists in individual objects and forwards it to a second queue. From those messages are read by a third route and depending on value of field _schoolId_ message is forwarded to a queue with the same name.
+
+Implemented routes look like this:
+![Route](img/camel-routing01.png)
+
+```bash
+cd camel/camel-dynamic-route
+mvn clean package
+java -jar target/camel-dynamic-route.jar
+```
+
+### Tasks
+* Run app
+* Modify [JSON producer](java-examples.md#message-content-send-json) to send lists of student results
+* Create a listener, that listens to all queues and outputs messages + queue name
 
 ## Camel and Spring Boot
 Camel can also used in conjunction with the Spring Boot framework. In this example Camel is started and a Spring bean is invoked for a fixed period. XML file sorting from hello world example is also executed.
