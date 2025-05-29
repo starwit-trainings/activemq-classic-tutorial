@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:camel="http://camel.apache.org/schema/spring"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-                        http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
+                        http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd
+                        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <!-- Allows us to use system properties as variables in this configuration file -->
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -91,8 +93,9 @@
                 uri="tcp://0.0.0.0:61616?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600" />
             <transportConnector name="ws"
                 uri="ws://0.0.0.0:61614?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600" />
-<!--             <transportConnector name="http"
-                uri="http://0.0.0.0:8080?transport.maximumConnections=1000&amp;transport.wireFormat.maxFrameSize=104857600&amp;transport.keepAlive=true&amp;transport.trace=true&amp;transport.useKeepAlive=true&amp;transport.connectionTimeout=30000" /> -->
+            <!--             <transportConnector name="http"
+            uri="http://0.0.0.0:8080?transport.maximumConnections=1000&amp;transport.wireFormat.maxFrameSize=104857600&amp;transport.keepAlive=true&amp;transport.trace=true&amp;transport.useKeepAlive=true&amp;transport.connectionTimeout=30000"
+            /> -->
         </transportConnectors>
 
         <!-- destroy the spring context on shutdown to stop jetty -->
@@ -106,13 +109,14 @@
             <topic physicalName="prefonfigured.topic" />
         </destinations>
 
-<!--         <plugins>
+        <!--         <plugins>
             <jaasAuthenticationPlugin configuration="activemq" />
             <authorizationPlugin>
                 <map>
                     <authorizationMap>
                         <authorizationEntries>
-                            <authorizationEntry topic="ActiveMQ.Advisory.>" read="admins,clients" write="admins,clients" admin="admins,clients"/>
+                            <authorizationEntry topic="ActiveMQ.Advisory.>" read="admins,clients" write="admins,clients"
+        admin="admins,clients"/>
                             <authorizationEntry queue=">" read="admins,clients" write="admins,clients" admin="admins" />
                             <authorizationEntry topic=">" read="admins,clients" write="admins,clients" admin="admins" />
                         </authorizationEntries>
@@ -122,7 +126,6 @@
         </plugins> -->
 
     </broker>
-
     <!--
         Enable web consoles, REST and Ajax APIs and demos
         The web consoles requires by default login, you can disable this in the jetty.xml file
@@ -131,4 +134,18 @@
     -->
     <import resource="jetty.xml" />
 
+
+<!--     <bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <constructor-arg value="vm://localhost?broker.persistent=false" />
+    </bean>
+
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+        <!-- simple bridge from a topic to queue -->
+        <route id="inbox monitoring">
+            <from uri="jms:queue:inbox" />
+            <to uri="jms:queue:inbox-processing" />
+            <to uri="jms:topic:monitoring" />
+        </route>
+    </camelContext>
+ -->
 </beans>
